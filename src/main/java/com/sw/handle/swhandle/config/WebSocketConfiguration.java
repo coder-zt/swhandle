@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
-import com.sw.handle.robot.impl.KeyBoardRobot;
+import com.sw.handle.swhandle.robot.impl.KeyBoardRobot;
 
 @Configuration
 public class WebSocketConfiguration {
@@ -17,9 +17,9 @@ public class WebSocketConfiguration {
         return new ServerEndpointExporter();
     }
 
-    @Bean
-    public KeyBoardRobot keyBoardRobot() {
-        return new KeyBoardRobot();
-    }
+    // @Bean
+    // public KeyBoardRobot keyBoardRobot() {
+    //     return new KeyBoardRobot();
+    // }
 
 }

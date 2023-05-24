@@ -1,4 +1,4 @@
-package com.sw.handle.robot;
+package com.sw.handle.swhandle.robot;
 
 public interface IkeyBoardRobot {
 

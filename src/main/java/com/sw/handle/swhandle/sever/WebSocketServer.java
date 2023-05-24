@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.sw.handle.robot.IkeyBoardRobot;
-import com.sw.handle.robot.impl.KeyBoardRobot;
+import com.sw.handle.swhandle.robot.IkeyBoardRobot;
+import com.sw.handle.swhandle.robot.impl.KeyBoardRobot;
 
 @ServerEndpoint("/websocket") // 访问路径: ws://localhost:8080/websocket
 @Component
@@ -48,10 +48,17 @@ public class WebSocketServer {
     // 接收消息
     @OnMessage
     public void message(String message, Session session) {
+        System.out.println("message ===> " + message);
         Object a = applicationContext.getBean(KeyBoardRobot.class);
         if(a instanceof KeyBoardRobot){
             robot = (KeyBoardRobot)a;
             robot.handleMsg(message);
+            try {
+                session.getBasicRemote().sendText(message);
+            } catch (IOException e) {
+                // ated catch block
+                e.printStackTrace();
+            }
         }
 
        
